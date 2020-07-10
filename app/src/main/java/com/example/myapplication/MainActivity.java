@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +16,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         final TextView goodMorning = findViewById(R.id.goodMorning);
         goodMorning.setText("click me");
+
         goodMorning.setTextColor(0xFF00FF00);
         goodMorning.setOnClickListener(this);
+        goodMorning.setOnLongClickListener(this);
 
     }
 
@@ -29,5 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             goodMorning.setText("Welcome");
             break;
     }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        TextView goodMorning = (TextView) v;
+        goodMorning.setText("booo!");
+        return false;
     }
 }
